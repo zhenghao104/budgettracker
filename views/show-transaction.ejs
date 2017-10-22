@@ -1,0 +1,28 @@
+<% include ./partials/header.ejs %>
+
+
+<div class="container pad-top">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3><%= transaction.title %></h3>
+        </div>
+        <div class="panel-body">
+          <p><%= transaction.date %></p><br>
+          <p><%= transaction.sign %> $ <%= transaction.amount %></p><br>
+          <p><%= transaction.category %></p><br>
+          <p><%= transaction.description %></p>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-warning" href="/<%= transaction._id %>/edit">Update</a>
+          <form class="inline-form" action="/<%= transaction._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ./partials/footer.ejs %>

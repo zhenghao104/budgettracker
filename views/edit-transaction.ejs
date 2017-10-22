@@ -1,0 +1,57 @@
+<% include ./partials/header.ejs %>
+
+<div class="container pad-top">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <form action="/<%= transaction._id %>?_method=PUT" method="POST">
+        <div class="form-group">
+          <label>Title</label>
+          <input class="form-control" type="text" name="title" value="<%= transaction.title %>">
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input class="form-control" name="date" type="date">
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select id="sel_cat" name="category">
+            <option value="groceries">Groceries</option>
+            <option value="fun">Fun</option>
+            <option value="shopping">Shopping</option>
+            <option value="new_cat">New Category</option>
+          </select>
+          <input type="text" id="new_cat" style="display: none;" name="newcategory" />
+          <script>
+          $('#sel_cat').change(function() {
+            $('#new_cat').css('display', ($(this).val() == 'new_cat') ? 'block' : 'none');
+          });
+          </script>
+        </div>
+
+        <div class="form-group">
+          <label>Sign</label>
+          <select id="sel_sign" name="sign">
+            <option value="+">+ (In)</option>
+            <option value="-">- (Out)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Amount</label>
+          <input type="number" name="amount" min="0" max="1000000">
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="desc_text" name="description" row = 8 cols = 40></textarea><br>
+        </div>
+
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" action="/" method="PUT">Update</button>
+    </form>
+  </div>
+</div>
+</div>
+
+<% include ./partials/footer.ejs %>

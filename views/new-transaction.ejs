@@ -1,0 +1,50 @@
+<% include ./partials/header.ejs %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div class="container pad-top">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1> Create A New Transaction</h1>
+
+      <!-- action indicates following page,
+      post method returns data requested -->
+      <form action="/new" method="post">
+        Title:<br>
+        <input type="text" name="title"><br>
+
+        Date:<br>
+        <input type="date" name="date"><br>
+
+        Category:<br>
+        <select id="sel_cat" name="category">
+        <option value="groceries">Groceries</option>
+        <option value="fun">Fun</option>
+        <option value="shopping">Shopping</option>
+        <option value="new_cat">New Category</option>
+        </select>
+        <input type="text" id="new_cat" style="display: none;" name="newcategory" />
+        <script>
+        $('#sel_cat').change(function() {
+            $('#new_cat').css('display', ($(this).val() == 'new_cat') ? 'block' : 'none');
+        });
+        </script><br>
+
+        Amount:<br>
+        <input type="number" name="amount" min="0" max="1000000"><br>
+
+        Sign:<br>
+        <select id="sel_sign" name="sign">
+        <option value="+">+ (In)</option>
+        <option value="-">- (Out)</option>
+        </select><br>
+
+        Description:<br>
+        <textarea id="desc_text" name="description"></textarea><br>
+
+        <input type="submit">
+
+    </div>
+  </div>
+</div>
+
+<% include ./partials/footer.ejs %>
